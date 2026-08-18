@@ -1,31 +1,161 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@font-face {
+  font-family: logofont;
+  src: url(../../../assets/fonts/Runethia.otf);
+}
 
-.maincontainer{
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  .maincontainer {
     height: 100vh;
     width: 100%;
-    .imagecontainer{
-        height: 100vh;
-        background-image: url(../../../assets/loginbg.png);  
-        background-position: cover;
-        background-size: cover;
+    .imagecontainer {
+      height: 100vh;
+      background-image: url(../../../assets/png/loginbg.png);
+      background-position: cover;
+      background-size: cover;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .leftcontainer {
+        height: 100%;
+        margin-left: 9%;
+        padding: 40px 0px;
+        color: white;
+        .companylogo {
+          h1 {
+            font-weight: 900;
+            font-family: logofont;
+          }
+        }
+        .shop {
+          margin-top: 180px;
+          height: 20%;
+          h1 {
+            font-weight: 700;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-bottom: 20px;
+          }
+          .shoplist {
+            height: 15%;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+            gap: 10px;
+            list-style: none;
+            font-family:
+              "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+              "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+          }
+        }
+      }
+      .rightcontainer {
+        height: 100%;
+        width: 34%;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(25px) saturate(140%);
+        box-shadow:
+          0 8px 32px rgba(0, 0, 0, 0.25),
+          inset 0 1px 1px rgba(255, 255, 255, 0.15);
+        color: white;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        .leftcontainer{
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding-left: 50px;
+        .close{
+            width: 100%;
+            text-align: end;
+
+            img {
+                text-align: end;
+              height: 32px;
+              width: 32px;
+              border:3px solid black;
+              border-radius: 10px;
+              padding: 20px 20px;
+              margin-right: 25px;
+            }
+        }
+        .welcome {
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: monospace;
+            
 
         }
-        .rightcontainer{
-            height: 100%;
-            width: 30%;
-            backdrop-filter: blur(8px);
-             -webkit-backdrop-filter: blur(25px) saturate(140%);
-              box-shadow:0 8px 32px rgba(0, 0, 0, 0.25),
-              inset 0 1px 1px rgba(255, 255, 255, 0.15);
+        .form {
+          form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            input {
+                padding: 12px 0;
+              width: 90%;
+              background-color: transparent;
+              border: none;
+              border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+              outline: none;
+              color: white;
+                font-size: 1.2rem;
+            
+            }
+            button {
+                margin-top: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              width: 90%;
+              border-radius: 30px;
+              padding: 10px 10px;
+              border: none;
+              font-size: 1.5rem;
+              text-align: start;
+              padding-left: 30px;
+              font-family:
+                "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+
+              img {
+                height: 32px;
+                width: 32px;
+              }
+            }
+          }
         }
+        .orline {
+            p{
+                width: 30%;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+            }
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            margin-left: 40px;    
+
+        }
+        .images {
+            display: flex;
+            justify-content: start;
+            gap: 20px;
+             margin-left: 40px;  
+        }
+        .newaccount {
+            display: flex;
+            justify-content: start;
+             margin-left: 40px;  
+            p {
+                font-size: 0.85rem;
+                font-family:
+                  "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+                  a{
+                    color: white;
+                    text-decoration: none;
+                  }
+            }
+        }
+      }
     }
-
-}
+  }
 }
