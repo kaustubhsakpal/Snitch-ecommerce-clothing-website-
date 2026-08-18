@@ -43,7 +43,7 @@ export const logincontroller = async (req, res) => {
   console.log(userexits.password);
 
   const logintoken = jwt.sign({id:userexits._id}, process.env.JWT_SECRETS);
-  cook
+  res.cookie("logintoken",logintoken);
   const ismatch = await bcrypt.compare(password, (userexits.password));
   if (ismatch) {
     return res.status(200).json({
