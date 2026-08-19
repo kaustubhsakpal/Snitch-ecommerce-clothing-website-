@@ -1,5 +1,5 @@
 import { setuser, setloading, seterror } from "../state/auth.slice.js";
-import { register, login, getme } from "../services/auth.api.js";
+import { login } from "../services/auth.api.js";
 import { useDispatch } from "react-redux";
 
 export const useAuth = () => {
@@ -19,7 +19,7 @@ export const useAuth = () => {
     }
   }
 
-  async function loginhandler({ email, password }) {
+  async function loginhandler({email, password} ) {
     console.log(email);
     
     try {
@@ -28,8 +28,12 @@ export const useAuth = () => {
       console.log(data);
       dispatch(setuser(data.user));
     } catch (err) {
-      console.log(err);
-      dispatch(seterror(err.response?.data?.message || "something went wrong"));
+      if(err.response?.status==401){
+          dispatch(seterror("invalid email or password"));
+        }
+        else{
+          dispatch(seterror("something went wrong"));
+      }
       throw new Error( err);
     } finally {
       dispatch(setloading(false));

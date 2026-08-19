@@ -11,20 +11,19 @@ import threeline from "../../../../assets/png/threeline.png";
 import { useAuth } from "../../hook/useAuth.hook.js";
 
 const login = () => {
-  const [isopen, setIsOpen] = useState("true");
-  const [email, setemail] = useState(null);
-  const [password, setpassword] = useState(null);
+  const [isopen, setIsOpen] = useState(true);
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
 
   const { registerhandler, loginhandler, getmehandler } = useAuth();
 
   function handelinput(e) {
     e.preventDefault();
-  }
-  useEffect(() => {
+
     console.log(email, password);
-    loginhandler( email, password );
-  });
-  
+    loginhandler({ email, password });
+  }
+
   return (
     <div className="maincontainer">
       <div className="imagecontainer">
@@ -34,13 +33,13 @@ const login = () => {
           </div>
           <div className="shop">
             <h1>Shop</h1>
-            <div className="shoplist">
+            <ul className="shoplist">
               <li>Mens</li>
               <li>Womens</li>
               <li>Kids</li>
               <li>Accessories</li>
               <li>Footwear</li>
-            </div>
+            </ul>
           </div>
         </div>
         <img
@@ -48,9 +47,8 @@ const login = () => {
           alt=""
           className="show"
           onClick={() => {
-            if (isopen == false) {
-              setIsOpen(true);
-            }
+            setIsOpen(true);
+
             console.log("hii");
           }}
         />
@@ -71,10 +69,12 @@ const login = () => {
             <h2>Welcome Back</h2>
           </div>
           <div className="form">
-            <form onSubmit={(e)=>{
-               handelinput(e)
-            }}>
-              <label htmlFor="">Email</label>
+            <form
+              onSubmit={(e) => {
+                handelinput(e);
+              }}
+            >
+              <label htmlFor="email">Email</label>
               <input
                 type="email"
                 name="email"
@@ -83,12 +83,13 @@ const login = () => {
                   setemail(e.target.value);
                 }}
               />
-              <label htmlFor="">Password</label>
-              <input type="password" 
-              name="password"
-              onChange={(e)=>{
-                 setpassword(e.target.value)
-              }}
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                name="password"
+                onChange={(e) => {
+                  setpassword(e.target.value);
+                }}
               />
               <button>
                 Continue <img src={rightarrow} alt="" />

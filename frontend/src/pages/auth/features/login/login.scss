@@ -132,7 +132,11 @@
                 height: 32px;
                 width: 32px;
               }
+              &:active{
+                transform: (scale(0.95));
+              }
             }
+            
           }
         }
         .orline {
