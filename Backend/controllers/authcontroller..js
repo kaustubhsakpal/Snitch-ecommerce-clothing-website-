@@ -1,10 +1,10 @@
-import { user } from "../models/auth.model.js";
+import { usermodel } from "../models/auth.model.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 export const authcontroller = async (req, res) => {
   const { username, email, password } = req.body;
 
-  const userallreadyexits = await user.findOne({
+  const userallreadyexits = await usermodel.findOne({
     username,
     email,
     password,
@@ -15,7 +15,7 @@ export const authcontroller = async (req, res) => {
     });
   }
 
-  const newuser = await user.create({
+  const newuser = await usermodel.create({
     username,
     email,
     password,
@@ -32,22 +32,21 @@ export const authcontroller = async (req, res) => {
 
 export const logincontroller = async (req, res) => {
   const { username, email, password } = req.body;
-  const userexits = await user.findOne({
+  const user = await usermodel.findOne({
     $or: [{username}, {email}],
   }).select("+password");
-  if (!userexits) {
+  if (!user) {
     return res.status(401).json({
       message: "unathorized or crendital wrong",
     });
   }
-  console.log(userexits.password);
 
-  const logintoken = jwt.sign({id:userexits._id}, process.env.JWT_SECRETS);
+  const logintoken = jwt.sign({id:user._id}, process.env.JWT_SECRETS);
   res.cookie("logintoken",logintoken);
-  const ismatch = await bcrypt.compare(password, (userexits.password));
+  const ismatch = await bcrypt.compare(password, (user.password));
   if (ismatch) {
     return res.status(200).json({
-      userexits,
+      user,
       message: "scessfully login",
       logintoken,
     });

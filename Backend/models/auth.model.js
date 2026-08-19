@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import bcrypt from 'bcrypt';
-export const usermodel=new mongoose.Schema({
+export const userSchema=new mongoose.Schema({
     username:{
         type:String,
         required:true
@@ -20,7 +20,7 @@ export const usermodel=new mongoose.Schema({
     timestamps:true
 })
 
-usermodel.pre("save",async function (next) {
+userSchema.pre("save",async function (next) {
     if(!this.isModified("password")){
         return next;
     }
@@ -30,4 +30,4 @@ usermodel.pre("save",async function (next) {
     next;
 })
 
-export const user = mongoose.model("user",usermodel)
+export const usermodel = mongoose.model("user",userSchema)
