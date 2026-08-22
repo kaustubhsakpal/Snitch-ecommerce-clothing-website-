@@ -17,7 +17,7 @@ import {createSlice} from '@reduxjs/toolkit';
         seterror:(state,action)=>{
           state.error=action.payload
         }
-    }
+      }
     
 })
 
