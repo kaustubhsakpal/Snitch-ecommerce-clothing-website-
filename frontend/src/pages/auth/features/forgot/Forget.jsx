@@ -6,7 +6,7 @@ export default function Forget() {
 
 	const submit = (event) => {
 		event.preventDefault();
-		setSent(true);
+		
 	};
 
 	return (
